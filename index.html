@@ -1,28 +1,59 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Player Performance | Football Analytics</title>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Football Tagalytics</title>
 <style>
-:root{--bg:#0b1220;--panel:#111c2e;--panel2:#16243a;--line:#26364d;--muted:#91a2bb;--text:#eef4fc;--green:#70e1b2;--blue:#78a9ff;--amber:#ffca78;--red:#ff8188;--purple:#bca0ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% -10%,#1b3150 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,select,input{font:inherit}.app{max-width:1450px;margin:auto;padding:28px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:24px}.brand{display:flex;gap:13px;align-items:center}.crest{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#75e5b5,#4b8bff);display:grid;place-items:center;color:#071322;font-size:22px;font-weight:900}.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800}.top h1{font-size:25px;line-height:1.1;margin:4px 0 0;letter-spacing:-.04em}.sub{color:var(--muted);font-size:12px}.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.button{border:1px solid var(--line);background:#16243a;color:var(--text);padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:650}.button.primary{background:var(--green);color:#071322;border-color:var(--green)}.button.danger{background:#2a1b1f;color:#ff8188;border-color:#5c2830}.button.danger:hover{background:#3a2026}.button:hover{filter:brightness(1.08)}.auth-bar{display:flex;gap:8px;align-items:center;background:#101b2d;border:1px solid var(--line);padding:6px 10px;border-radius:12px;font-size:12px}.auth-bar input{background:#0e1929;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;width:140px}.tabs{display:flex;gap:6px;background:#0f1a2b;border:1px solid var(--line);padding:5px;border-radius:13px;width:max-content;margin-bottom:22px}.tab{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:9px;cursor:pointer;font-weight:750}.tab.active{background:#263850;color:white;box-shadow:inset 0 0 0 1px #39506d}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:10px 0 15px}.section-head h2{font-size:18px;margin:0;letter-spacing:-.02em}.section-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:18px}.card{background:linear-gradient(150deg,rgba(22,36,58,.97),rgba(15,26,43,.98));border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0;box-shadow:0 10px 28px #00000012}.kpi-label{font-size:12px;color:var(--muted);font-weight:650}.kpi-value{font-size:29px;font-weight:850;letter-spacing:-.05em;margin:9px 0 4px;white-space:nowrap}.kpi-note{font-size:11px;color:var(--muted)}.kpi-accent{width:26px;height:3px;border-radius:3px;background:var(--green);margin-bottom:13px}.twocol{grid-template-columns:1.2fr .8fr}.half{grid-template-columns:1fr 1fr}.thirds{grid-template-columns:1fr 1fr 1fr}.card-title{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:13px}.card-title h3{margin:0;font-size:14px}.card-title p{margin:4px 0 0;color:var(--muted);font-size:11px}.pill{border:1px solid #334761;background:#1b2b42;color:#c6d4e7;padding:4px 8px;border-radius:20px;font-size:10px;white-space:nowrap}.chart{width:100%;min-height:190px}.chart svg{width:100%;height:auto;display:block;overflow:visible}.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin-top:8px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}.insights{display:grid;gap:10px}.insight{display:flex;gap:11px;padding:12px;border:1px solid var(--line);background:#101b2d;border-radius:12px}.insight-icon{width:29px;height:29px;flex:none;border-radius:9px;display:grid;place-items:center;background:#20364b;color:var(--green);font-weight:900}.insight strong{display:block;font-size:12px;margin-bottom:3px}.insight span{display:block;color:var(--muted);font-size:11px}.notice{border:1px solid #65502f;background:#2a241a;color:#ffdfa8;padding:12px 14px;border-radius:12px;font-size:12px;margin:0 0 15px}.notice strong{color:#ffe7bd}.view{display:none}.view.active{display:block}.filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.select{background:#0e1929;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 11px;min-width:180px}.radar-wrap{display:grid;grid-template-columns:minmax(0,1fr) 180px;align-items:center;gap:10px}.radar-key{display:grid;gap:10px;font-size:11px;color:var(--muted)}.radar-key b{color:var(--text);display:block;font-size:12px}.stat-table{width:100%;border-collapse:collapse;font-size:12px}.stat-table th{text-align:left;color:var(--muted);font-weight:650;padding:10px 8px;border-bottom:1px solid var(--line)}.stat-table td{padding:11px 8px;border-bottom:1px solid #223149}.stat-table tr:last-child td{border-bottom:0}.num{font-variant-numeric:tabular-nums;font-weight:750}.table-wrap{overflow:auto}.event-list{max-height:380px;overflow:auto}.event-row{display:grid;grid-template-columns:55px 1fr auto;gap:10px;align-items:center;padding:9px 2px;border-bottom:1px solid #24334a}.event-row:last-child{border-bottom:0}.time{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}.event-name{font-weight:700;font-size:12px}.event-zone{font-size:10px;color:var(--muted)}.empty{padding:28px 10px;text-align:center;color:var(--muted);border:1px dashed #3a4b64;border-radius:12px;font-size:12px}.foot{color:#71839d;font-size:10px;text-align:center;margin:25px 0 5px}.compare-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.compare-kpi{background:#101b2d;border:1px solid var(--line);padding:12px;border-radius:12px}.compare-kpi .label{font-size:11px;color:var(--muted)}.compare-kpi .values{display:flex;justify-content:space-between;gap:10px;margin-top:7px;font-size:15px;font-weight:800}.delta{font-size:10px;color:var(--green);margin-top:4px}@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.twocol,.half{grid-template-columns:1fr}.thirds{grid-template-columns:1fr 1fr}}@media(max-width:650px){.app{padding:16px}.top{align-items:flex-start;flex-direction:column}.top h1{font-size:22px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-value{font-size:25px}.thirds{grid-template-columns:1fr}.radar-wrap{grid-template-columns:1fr}.radar-key{grid-template-columns:1fr 1fr}.tabs{width:100%}.tab{flex:1;padding:10px 7px;font-size:12px}.section-head{align-items:flex-start;flex-direction:column}}
+:root{--bg:#0b1220;--panel:#111c2e;--panel2:#16243a;--line:#26364d;--muted:#91a2bb;--text:#eef4fc;--green:#70e1b2;--blue:#78a9ff;--amber:#ffca78;--red:#ff8188;--purple:#bca0ff}*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 20% -10%,#1b3150 0,transparent 38%),var(--bg);color:var(--text);font:14px/1.45 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,sans-serif}button,select,input{font:inherit}.app{max-width:1450px;margin:auto;padding:28px}.top{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:24px}.brand{display:flex;gap:13px;align-items:center}.crest{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#75e5b5,#4b8bff);display:grid;place-items:center;color:#071322;font-size:22px;font-weight:900}.eyebrow{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);font-weight:800}.top h1{font-size:25px;line-height:1.1;margin:4px 0 0;letter-spacing:-.04em}.sub{color:var(--muted);font-size:12px}.top-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.button{border:1px solid var(--line);background:#16243a;color:var(--text);padding:10px 13px;border-radius:10px;cursor:pointer;font-weight:650}.button.primary{background:var(--green);color:#071322;border-color:var(--green)}.button.danger{background:#2a1b1f;color:#ff8188;border-color:#5c2830}.button.danger:hover{background:#3a2026}.button:hover{filter:brightness(1.08)}.auth-bar{display:flex;gap:8px;align-items:center;background:#101b2d;border:1px solid var(--line);padding:6px 10px;border-radius:12px;font-size:12px}.auth-bar input{background:#0e1929;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:6px 8px;width:140px}.tabs{display:flex;gap:6px;background:#0f1a2b;border:1px solid var(--line);padding:5px;border-radius:13px;width:max-content;margin-bottom:22px}.tab{border:0;background:transparent;color:var(--muted);padding:10px 16px;border-radius:9px;cursor:pointer;font-weight:750}.tab.active{background:#263850;color:white;box-shadow:inset 0 0 0 1px #39506d}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:10px 0 15px}.section-head h2{font-size:18px;margin:0;letter-spacing:-.02em}.section-head p{margin:3px 0 0;color:var(--muted);font-size:12px}.grid{display:grid;gap:14px}.kpis{grid-template-columns:repeat(6,minmax(0,1fr));margin-bottom:18px}.card{background:linear-gradient(150deg,rgba(22,36,58,.97),rgba(15,26,43,.98));border:1px solid var(--line);border-radius:16px;padding:17px;min-width:0;box-shadow:0 10px 28px #00000012}.kpi-label{font-size:12px;color:var(--muted);font-weight:650}.kpi-value{font-size:29px;font-weight:850;letter-spacing:-.05em;margin:9px 0 4px;white-space:nowrap}.kpi-note{font-size:11px;color:var(--muted)}.kpi-accent{width:26px;height:3px;border-radius:3px;background:var(--green);margin-bottom:13px}.twocol{grid-template-columns:1.2fr .8fr}.half{grid-template-columns:1fr 1fr}.thirds{grid-template-columns:1fr 1fr 1fr}.card-title{display:flex;justify-content:space-between;align-items:start;gap:12px;margin-bottom:13px}.card-title h3{margin:0;font-size:14px}.card-title p{margin:4px 0 0;color:var(--muted);font-size:11px}.pill{border:1px solid #334761;background:#1b2b42;color:#c6d4e7;padding:4px 8px;border-radius:20px;font-size:10px;white-space:nowrap}.chart{width:100%;min-height:190px}.chart svg{width:100%;height:auto;display:block;overflow:visible}.legend{display:flex;gap:14px;flex-wrap:wrap;color:var(--muted);font-size:11px;margin-top:8px}.dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px}.insights{display:grid;gap:10px}.insight{display:flex;gap:11px;padding:12px;border:1px solid var(--line);background:#101b2d;border-radius:12px}.insight-icon{width:29px;height:29px;flex:none;border-radius:9px;display:grid;place-items:center;background:#20364b;color:var(--green);font-weight:900}.insight strong{display:block;font-size:12px;margin-bottom:3px}.insight span{display:block;color:var(--muted);font-size:11px}.notice{border:1px solid #65502f;background:#2a241a;color:#ffdfa8;padding:12px 14px;border-radius:12px;font-size:12px;margin:0 0 15px}.notice strong{color:#ffe7bd}.view{display:none}.view.active{display:block}.filters{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.select{background:#0e1929;color:var(--text);border:1px solid var(--line);border-radius:9px;padding:9px 11px;min-width:180px}.radar-wrap{display:grid;grid-template-columns:minmax(0,1fr) 180px;align-items:center;gap:10px}.radar-key{display:grid;gap:10px;font-size:11px;color:var(--muted)}.radar-key b{color:var(--text);display:block;font-size:12px}.stat-table{width:100%;border-collapse:collapse;font-size:12px}.stat-table th{text-align:left;color:var(--muted);font-weight:650;padding:10px 8px;border-bottom:1px solid var(--line)}.stat-table td{padding:11px 8px;border-bottom:1px solid #223149}.stat-table tr:last-child td{border-bottom:0}.num{font-variant-numeric:tabular-nums;font-weight:750}.table-wrap{overflow:auto}.event-list{max-height:380px;overflow:auto}.event-row{display:grid;grid-template-columns:55px 1fr auto;gap:10px;align-items:center;padding:9px 2px;border-bottom:1px solid #24334a}.event-row:last-child{border-bottom:0}.time{font-size:11px;color:var(--muted);font-variant-numeric:tabular-nums}.event-name{font-weight:700;font-size:12px}.event-zone{font-size:10px;color:var(--muted)}.empty{padding:28px 10px;text-align:center;color:var(--muted);border:1px dashed #3a4b64;border-radius:12px;font-size:12px}.foot{color:#71839d;font-size:10px;text-align:center;margin:25px 0 5px}.compare-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.compare-kpi{background:#101b2d;border:1px solid var(--line);padding:12px;border-radius:12px}.compare-kpi .label{font-size:11px;color:var(--muted)}.compare-kpi .values{display:flex;justify-content:space-between;gap:10px;margin-top:7px;font-size:15px;font-weight:800}.delta{font-size:10px;color:var(--green);margin-top:4px}
+/* Splash Screen Styles */
+#splash-overlay{position:fixed;inset:0;background:radial-gradient(ellipse at 50% -20%,#1b3150 0,#0b1220 70%);display:flex;align-items:center;justify-content:center;z-index:9999;padding:20px}
+.splash-box{background:linear-gradient(150deg,rgba(22,36,58,.98),rgba(15,26,43,.99));border:1px solid var(--line);border-radius:20px;padding:36px;max-width:440px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,0.5);text-align:center}
+.splash-box .crest{margin:0 auto 16px;width:56px;height:56px;font-size:28px}
+.splash-box h2{margin:0 0 8px;font-size:24px;letter-spacing:-.03em}
+.splash-box p{color:var(--muted);font-size:13px;margin:0 0 24px;line-height:1.5}
+.splash-form{display:flex;flex-direction:column;gap:12px;text-align:left}
+.splash-form label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.splash-form input{background:#0e1929;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%;font-size:14px}
+.splash-actions{display:flex;gap:10px;margin-top:8px}
+.splash-actions button{flex:1;padding:12px;font-size:14px}
+@media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.twocol,.half{grid-template-columns:1fr}.thirds{grid-template-columns:1fr 1fr}}@media(max-width:650px){.app{padding:16px}.top{align-items:flex-start;flex-direction:column}.top h1{font-size:22px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-value{font-size:25px}.thirds{grid-template-columns:1fr}.radar-wrap{grid-template-columns:1fr}.radar-key{grid-template-columns:1fr 1fr}.tabs{width:100%}.tab{flex:1;padding:10px 7px;font-size:12px}.section-head{align-items:flex-start;flex-direction:column}}
 </style>
-</head><body><div class="app">
+</head><body>
+
+<!-- Splash Screen Modal -->
+<div id="splash-overlay">
+  <div class="splash-box">
+    <div class="crest">✦</div>
+    <h2>Football Tagalytics</h2>
+    <p>Sign in or create a free account to store and track individual player metrics across the season.</p>
+    <div class="splash-form">
+      <div>
+        <label>Email Address</label>
+        <input type="email" id="splash-email" placeholder="you@example.com">
+      </div>
+      <div>
+        <label>Password</label>
+        <input type="password" id="splash-pass" placeholder="••••••••">
+      </div>
+      <div class="splash-actions">
+        <button class="button primary" id="splash-btn-login">Log In</button>
+        <button class="button" id="splash-btn-signup">Create Account</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="app">
 <header class="top">
   <div class="brand">
     <div class="crest">✦</div>
     <div>
       <div class="eyebrow">Player performance lab</div>
       <h1>Football Analytics</h1>
-      <div class="sub" id="subtitle">Youth player · 2 matches loaded</div>
+      <div class="sub" id="subtitle">Youth player · 0 matches loaded</div>
     </div>
   </div>
   <div class="top-actions">
     <div id="auth-container" class="auth-bar">
-      <span id="auth-status" style="color:var(--muted);">Loading Auth...</span>
-      <div id="auth-logged-out" style="display:flex; gap:6px; align-items:center;">
-        <input type="email" id="auth-email" placeholder="Email">
-        <input type="password" id="auth-pass" placeholder="Password">
-        <button class="button primary" id="btn-login" style="padding:6px 10px;">Login</button>
-        <button class="button" id="btn-signup" style="padding:6px 10px;">Sign Up</button>
-      </div>
-      <div id="auth-logged-in" style="display:none; gap:6px; align-items:center;">
+      <span id="auth-status" style="color:var(--muted);">Cloud Sync Active:</span>
+      <div id="auth-logged-in" style="display:flex; gap:6px; align-items:center;">
         <span id="user-display" style="font-weight:600;"></span>
         <button class="button danger" id="btn-logout" style="padding:6px 10px;">Logout</button>
       </div>
@@ -34,11 +65,11 @@
 </header>
 <nav class="tabs"><button class="tab active" data-view="season">Season at a glance</button><button class="tab" data-view="match">Match centre</button><button class="tab" data-view="manage">Manage matches</button></nav>
 <div id="season" class="view active">
-<div class="section-head"><div><h2>Season at a glance</h2><p>High-level output, consistency and trends across every loaded match.</p></div><span class="pill" id="season-count">2 MATCHES LOADED</span></div>
-<div class="notice"><strong>Data note:</strong> GOAL and ASSIST events are attributed to the player; GOAL FOR and GOAL AGAINST describe team goals. Pass, shot and duel percentages below are provisional interpretations of the event labels. Add more match CSVs or import JSON to unlock meaningful season trends.</div>
+<div class="section-head"><div><h2>Season at a glance</h2><p>High-level output, consistency and trends across every loaded match.</p></div><span class="pill" id="season-count">0 MATCHES LOADED</span></div>
+<div class="notice"><strong>Data note:</strong> GOAL and ASSIST events are attributed to the player; GOAL FOR and GOAL AGAINST describe team goals. Pass, shot and duel percentages below are provisional interpretations of the event labels. Add your first match CSV or import JSON to unlock season trends.</div>
 <div class="grid kpis" id="season-kpis"></div>
 <div class="grid twocol" style="margin-bottom:14px"><section class="card"><div class="card-title"><div><h3>Season trends</h3><p>Track the key rates match by match as more data is added.</p></div><span class="pill">TREND VIEW</span></div><div class="chart" id="trend-chart"></div><div class="legend"><span><i class="dot" style="background:var(--green)"></i>Pass accuracy</span><span><i class="dot" style="background:var(--blue)"></i>Duel win rate</span><span><i class="dot" style="background:var(--amber)"></i>Shot accuracy</span></div></section>
-<section class="card"><div class="card-title"><div><h3>Season story so far</h3><p>Evidence-led observations from the loaded matches.</p></div><span class="pill">AUTO INSIGHTS</span></div><div class="insights" id="season-insights"><div class="insight"><div class="insight-icon">✦</div><div><strong>2 Matches Analysed</strong><span>Season baseline established across loaded fixtures.</span></div></div></div></section></div>
+<section class="card"><div class="card-title"><div><h3>Season story so far</h3><p>Evidence-led observations from the loaded matches.</p></div><span class="pill">AUTO INSIGHTS</span></div><div class="insights" id="season-insights"><div class="insight"><div class="insight-icon">✦</div><div><strong>No Matches Analysed</strong><span>Add your first match to establish a performance baseline.</span></div></div></div></section></div>
 <div class="grid half"><section class="card"><div class="card-title"><div><h3>Contribution profile</h3><p>Average activity per match across the season (normalised).</p></div><span class="pill">SEASON AVERAGE</span></div><div id="season-radar" class="radar-wrap"></div></section><section class="card"><div class="card-title"><div><h3>Match register</h3><p>Quick comparison of loaded match summaries.</p></div><span class="pill">ALL MATCHES</span></div><div class="table-wrap"><table class="stat-table"><thead><tr><th>Match</th><th>Events</th><th>Recoveries</th><th>Chances</th><th>Pass %*</th></tr></thead><tbody id="season-table"></tbody></table></div></section></div>
 </div>
 <div id="match" class="view">
@@ -60,16 +91,15 @@
   import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
   import { getFirestore, collection, getDocs, doc, setDoc, deleteDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
-  // TODO: Replace with your actual Firebase config keys from Firebase Console
   const firebaseConfig = {
-  apiKey: "AIzaSyCGWmcu92q0gtxphblpGNc5nO_RPFdHOx8",
-  authDomain: "football-tagalytics.firebaseapp.com",
-  projectId: "football-tagalytics",
-  storageBucket: "football-tagalytics.firebasestorage.app",
-  messagingSenderId: "163605607649",
-  appId: "1:163605607649:web:02e590276ea6076be773a0",
-  measurementId: "G-1BYNK3KPQT"
-};
+    apiKey: "AIzaSyCGWmcu92q0gtxphblpGNc5nO_RPFdHOx8",
+    authDomain: "football-tagalytics.firebaseapp.com",
+    projectId: "football-tagalytics",
+    storageBucket: "football-tagalytics.firebasestorage.app",
+    messagingSenderId: "163605607649",
+    appId: "1:163605607649:web:02e590276ea6076be773a0",
+    measurementId: "G-1BYNK3KPQT"
+  };
 
   const app = initializeApp(firebaseConfig);
   const auth = getAuth(app);
@@ -77,43 +107,35 @@
 
   window.currentUser = null;
 
+  const splashOverlay = document.getElementById('splash-overlay');
+
   onAuthStateChanged(auth, async (user) => {
     window.currentUser = user;
-    const loggedOutDiv = document.getElementById('auth-logged-out');
-    const loggedInDiv = document.getElementById('auth-logged-in');
     const userDisplay = document.getElementById('user-display');
-    const authStatus = document.getElementById('auth-status');
 
     if (user) {
-      loggedOutDiv.style.display = 'none';
-      loggedInDiv.style.display = 'flex';
+      splashOverlay.style.display = 'none';
       userDisplay.textContent = user.email;
-      authStatus.textContent = "Cloud Sync Active:";
       await loadMatchesFromCloud();
     } else {
-      loggedOutDiv.style.display = 'flex';
-      loggedInDiv.style.display = 'none';
-      authStatus.textContent = "Offline Mode:";
-      // Load initial mock matches if offline
-      if(matches.length === 0) {
-        matches = INITIAL_MATCHES.map((m,i)=>makeMatch(m,i));
-        renderSeason();
-        renderMatch();
-      }
+      splashOverlay.style.display = 'flex';
+      matches = [];
+      renderSeason();
+      renderMatch();
     }
   });
 
-  document.getElementById('btn-login').addEventListener('click', async () => {
-    const email = document.getElementById('auth-email').value;
-    const pass = document.getElementById('auth-pass').value;
+  document.getElementById('splash-btn-login').addEventListener('click', async () => {
+    const email = document.getElementById('splash-email').value;
+    const pass = document.getElementById('splash-pass').value;
     try {
       await signInWithEmailAndPassword(auth, email, pass);
     } catch(e) { alert("Login failed: " + e.message); }
   });
 
-  document.getElementById('btn-signup').addEventListener('click', async () => {
-    const email = document.getElementById('auth-email').value;
-    const pass = document.getElementById('auth-pass').value;
+  document.getElementById('splash-btn-signup').addEventListener('click', async () => {
+    const email = document.getElementById('splash-email').value;
+    const pass = document.getElementById('splash-pass').value;
     try {
       await createUserWithEmailAndPassword(auth, email, pass);
     } catch(e) { alert("Sign up failed: " + e.message); }
@@ -121,9 +143,6 @@
 
   document.getElementById('btn-logout').addEventListener('click', async () => {
     await signOut(auth);
-    matches = INITIAL_MATCHES.map((m,i)=>makeMatch(m,i));
-    renderSeason();
-    renderMatch();
   });
 
   window.saveMatchesToCloud = async function() {
@@ -153,13 +172,7 @@
           events: data.events || []
         });
       });
-      if(cloudMatches.length > 0) {
-        matches = cloudMatches.map((m,i)=>makeMatch(m,i));
-      } else {
-        // If user has no matches in cloud yet, seed with INITIAL_MATCHES
-        matches = INITIAL_MATCHES.map((m,i)=>makeMatch(m,i));
-        await saveMatchesToCloud();
-      }
+      matches = cloudMatches.map((m,i)=>makeMatch(m,i));
       renderSeason();
       renderMatch();
     } catch(e) { console.error("Error loading from cloud:", e); }
@@ -174,83 +187,6 @@
 </script>
 
 <script>
-const INITIAL_MATCHES = [
-  {
-    "name": "Match 1 (Oct 3)",
-    "file": "MatchTag_20261003_125920.csv",
-    "events": [
-      {"time": "00:31", "seconds": 31, "period": "P1", "event": "PASS FAIL", "zone": "-"},
-      {"time": "02:43", "seconds": 163, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "02:45", "seconds": 165, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "02:57", "seconds": 177, "period": "P1", "event": "PASS FAIL", "zone": "-"},
-      {"time": "03:23", "seconds": 203, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "03:29", "seconds": 209, "period": "P1", "event": "PASS FAIL", "zone": "-"},
-      {"time": "03:32", "seconds": 212, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "03:34", "seconds": 214, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "03:51", "seconds": 231, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "03:53", "seconds": 233, "period": "P1", "event": "PASS FAIL", "zone": "-"},
-      {"time": "04:39", "seconds": 279, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "07:11", "seconds": 431, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "07:46", "seconds": 466, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "08:09", "seconds": 489, "period": "P1", "event": "DUEL LOST", "zone": "-"},
-      {"time": "08:52", "seconds": 532, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "09:12", "seconds": 552, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "09:40", "seconds": 580, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "10:35", "seconds": 635, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "12:15", "seconds": 735, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "13:10", "seconds": 790, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "22:15", "seconds": 1335, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "22:30", "seconds": 1350, "period": "P1", "event": "PASS FAIL", "zone": "-"},
-      {"time": "24:00", "seconds": 1440, "period": "P1", "event": "PASS FAIL", "zone": "-"}
-    ]
-  },
-  {
-    "name": "Match 2 (Oct 10)",
-    "file": "MatchTag_20261010_105139.csv",
-    "events": [
-      {"time": "00:31", "seconds": 31, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "01:48", "seconds": 108, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "03:11", "seconds": 191, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "04:24", "seconds": 264, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "06:52", "seconds": 412, "period": "P1", "event": "SHOT MISS", "zone": "-"},
-      {"time": "08:00", "seconds": 480, "period": "P1", "event": "CHANCE CREATED", "zone": "-"},
-      {"time": "08:10", "seconds": 490, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "09:10", "seconds": 550, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "11:30", "seconds": 690, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "11:41", "seconds": 701, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "12:40", "seconds": 760, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "13:48", "seconds": 828, "period": "P1", "event": "DUEL LOST", "zone": "-"},
-      {"time": "14:31", "seconds": 871, "period": "P1", "event": "DUEL LOST", "zone": "-"},
-      {"time": "15:17", "seconds": 917, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "17:01", "seconds": 1021, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "18:13", "seconds": 1093, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "18:58", "seconds": 1138, "period": "P1", "event": "SHOT", "zone": "-"},
-      {"time": "21:14", "seconds": 1274, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "21:56", "seconds": 1316, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "22:52", "seconds": 1372, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "24:21", "seconds": 1461, "period": "P1", "event": "Goal against", "zone": "-"},
-      {"time": "25:27", "seconds": 1527, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "25:56", "seconds": 1556, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "26:04", "seconds": 1564, "period": "P1", "event": "PASS FAIL", "zone": "-"},
-      {"time": "27:22", "seconds": 1642, "period": "P1", "event": "CHANCE CREATED", "zone": "-"},
-      {"time": "28:04", "seconds": 1684, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "30:14", "seconds": 1814, "period": "P1", "event": "BALL RECOVERY", "zone": "-"},
-      {"time": "30:20", "seconds": 1820, "period": "P1", "event": "SUB OFF", "zone": "-"},
-      {"time": "34:31", "seconds": 2071, "period": "P1", "event": "Goal for", "zone": "-"},
-      {"time": "38:17", "seconds": 2297, "period": "P1", "event": "Goal for", "zone": "-"},
-      {"time": "38:31", "seconds": 2311, "period": "P1", "event": "SUB ON", "zone": "-"},
-      {"time": "42:10", "seconds": 2530, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "42:19", "seconds": 2539, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "44:45", "seconds": 2685, "period": "P1", "event": "DUEL", "zone": "-"},
-      {"time": "45:00", "seconds": 2700, "period": "P1", "event": "PASS", "zone": "-"},
-      {"time": "46:51", "seconds": 2811, "period": "P1", "event": "SHOT", "zone": "-"},
-      {"time": "58:12", "seconds": 3492, "period": "P1", "event": "DRIBBLE", "zone": "-"},
-      {"time": "58:13", "seconds": 3493, "period": "P1", "event": "SHOT", "zone": "-"},
-      {"time": "58:18", "seconds": 3498, "period": "P1", "event": "PASS", "zone": "-"}
-    ]
-  }
-];
-
 let matches=[];
 const palette=['#70e1b2','#78a9ff','#ffca78','#bca0ff','#ff8188','#6ed7e9','#d6e28c'];
 function norm(s){return String(s||'').trim().toUpperCase()}
@@ -321,13 +257,13 @@ function radarMarkupMatch(m){
 }
 
 function trend(){let ms=matches,labels=ms.map((m,i)=>esc(m.name));let sers=[{name:'Pass accuracy',color:'var(--green)',values:ms.map(m=>get(m).passAcc)},{name:'Duel win rate',color:'var(--blue)',values:ms.map(m=>get(m).duelRate)},{name:'Shot accuracy',color:'var(--amber)',values:ms.map(m=>get(m).shotAcc)}];document.getElementById('trend-chart').innerHTML=ms.length?svgLine(sers,labels):'<div class="empty">Add match CSVs to build season trends.</div>';}
-function renderSeason(){let all=matches.map(get),n=matches.length;document.getElementById('season-count').textContent=`${n} MATCH${n===1?'':'ES'} LOADED`;document.getElementById('subtitle').textContent=`Youth player · ${n} match${n===1?'':'es'} loaded`;let total=k=>all.reduce((a,s)=>a+s[k],0);let pass=total('pass'),fail=total('passFail'),shots=total('shots'),miss=total('shotMiss'),duels=total('duels'),lost=total('duelLost');let pa=pass+fail?pass/(pass+fail)*100:null,sa=shots+miss?shots/(shots+miss)*100:null,dw=duels+lost?duels/(duels+lost)*100:null;document.getElementById('season-kpis').innerHTML=[kpi('Pass accuracy',fmt(pa,'%'),`${pass} tagged PASS · ${fail} PASS FAIL`,'var(--green)'),kpi('Shot accuracy',fmt(sa,'%'),`${shots} SHOT · ${miss} SHOT MISS`,'var(--amber)'),kpi('Duels won',fmt(dw,'%'),`${duels} DUEL · ${lost} DUEL LOST`,'var(--blue)'),kpi('Goals per game',fmt(n?total('playerGoals')/n:null,'x'),`${total('playerGoals')} player goals across ${n} match${n===1?'':'es'}`,'var(--purple)'),kpi('Assists per game',fmt(n?total('assists')/n:null,'x'),`${total('assists')} player assists across ${n} match${n===1?'':'es'}`,'var(--purple)'),kpi('Matches in season',n,'Loaded matches','var(--red)')].join('');trend();document.getElementById('season-radar').innerHTML=n?radarMarkupSeason():'<div class="empty">Load a match to see the profile.</div>';document.getElementById('season-table').innerHTML=matches.map((m,i)=>{let s=get(m);return `<tr><td><button class="button" style="padding:5px 8px" onclick="openMatch('${m.id}')">${esc(m.name)}</button></td><td class="num">${s.events}</td><td class="num">${s.recoveries}</td><td class="num">${s.chances}</td><td class="num">${fmt(s.passAcc,'%')}</td></tr>`}).join('');renderManage();}
-function renderMatch(){let a=document.getElementById('match-a'),b=document.getElementById('match-b'),prevA=a.value,prevB=b.value;a.innerHTML=matches.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');b.innerHTML='<option value="">Compare with…</option>'+matches.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');if(matches.some(m=>m.id===prevA))a.value=prevA;if(matches.some(m=>m.id===prevB))b.value=prevB;let m=matches.find(x=>x.id===a.value)||matches[0];if(!m){document.getElementById('match-kpis').innerHTML='';return}let s=get(m);document.getElementById('match-kpis').innerHTML=[kpi('Tagged events',s.events,'All timestamped actions','var(--green)'),kpi('Ball recoveries',s.recoveries,'Recorded recovery events','var(--blue)'),kpi('Chances created',s.chances,'As tagged in this export','var(--purple)'),kpi('Pass accuracy',fmt(s.passAcc,'%'),'Provisional calculation','var(--green)'),kpi('Duels won',fmt(s.duelRate,'%'),'Provisional calculation','var(--blue)'),kpi('Match name',m.name,'Selected fixture','var(--red)')].join('');document.getElementById('timeline-total').textContent=s.events+' EVENTS';let cats=[...new Set(m.events.map(e=>e.event))];let colors=Object.fromEntries(cats.map((c,i)=>[c,palette[i%palette.length]]));let max=Math.max(1,...m.events.map(e=>e.seconds));let w=600,h=200,left=35,right=12,top=22,bottom=28;let xAt=sec=>left+(sec/max)*(w-left-right);let intervals=[];let off=null;for(const ev of m.events){if(norm(ev.event)==='SUB OFF'){off=ev.seconds;}else if(norm(ev.event)==='SUB ON'&&off!==null){intervals.push([off,ev.seconds]);off=null;}}if(off!==null)intervals.push([off,max]);let absent=intervals.map(([a,b])=>`<rect x="${xAt(a)}" y="${top}" width="${Math.max(1,xAt(b)-xAt(a))}" height="${h-top-bottom}" fill="url(#absenceHatch)" opacity=".9"></rect>`).join('');let ball=(x,y,color,title)=>`<g transform="translate(${x},${y})"><circle r="7" fill="${color}" stroke="#f1f5f9" stroke-width="1.2"/><path d="M-2.4 -2.2 L2.4 -2.2 L3.8 1.8 L0 4.1 L-3.8 1.8 Z" fill="none" stroke="#142033" stroke-width="1.1"/></g>`;let marks=m.events.map(e=>{let x=xAt(e.seconds);let i=cats.indexOf(e.event);let y=top+((i+.5)/cats.length)*(h-top-bottom);let n=norm(e.event);if(n==='GOAL FOR')return ball(x,y,'#26d982','Goal for');if(n==='GOAL AGAINST')return ball(x,y,'#f04452','Goal against');return `<circle cx="${x}" cy="${y}" r="4.2" fill="${colors[e.event]}" stroke="#101b2d" stroke-width="1.5"><title>${e.time} · ${esc(e.event)}</title></circle>`}).join('');let labels=[0,.25,.5,.75,1].map(v=>{let x=left+(w-left-right)*v;return `<line x1="${x}" y1="${top}" x2="${x}" y2="${h-bottom}" stroke="#26364d"/><text x="${x}" y="${h-8}" text-anchor="middle" fill="#8294ad" font-size="10">${Math.round(max*v/60)}′</text>`}).join('');let ylabels=cats.map((c,i)=>`<text x="${left-7}" y="${top+((i+.5)/cats.length)*(h-top-bottom)+3}" text-anchor="end" fill="#9aabc1" font-size="9">${esc(c.length>14?c.slice(0,13)+'…':c)}</text>`).join('');document.getElementById('timeline-chart').innerHTML=`<svg viewBox="0 0 ${w} ${h}"><defs><pattern id="absenceHatch" patternUnits="userSpaceOnUse" width="8" height="8"><rect width="8" height="8" fill="#7f1d2d" fill-opacity=".20"/><path d="M-2 2 L2 -2 M0 8 L8 0" stroke="#ff5968" stroke-width="1.4"/></pattern></defs>${absent}${labels}${ylabels}${marks}</svg>`;document.getElementById('timeline-legend').innerHTML=cats.slice(0,7).map(c=>`<span><i class="dot" style="background:${colors[c]}"></i>${esc(c)}</span>`).join('');document.getElementById('event-chart').innerHTML=svgBars(cats.map(c=>({label:c,value:m.events.filter(e=>e.event===c).length,color:colors[c]})).sort((x,y)=>y.value-x.value));document.getElementById('match-radar').innerHTML=radarMarkupMatch(m);document.getElementById('event-count').textContent=s.events+' EVENTS';document.getElementById('event-list').innerHTML=m.events.map(e=>`<div class="event-row"><div class="time">${esc(e.time)}</div><div><div class="event-name">${esc(e.event)}</div><div class="event-zone">${esc(e.period||'')} · Zone ${esc(e.zone||'-')}</div></div><span class="dot" style="background:${colors[e.event]}"></span></div>`).join('');renderCompare();}
+function renderSeason(){let all=matches.map(get),n=matches.length;document.getElementById('season-count').textContent=`${n} MATCH${n===1?'':'ES'} LOADED`;document.getElementById('subtitle').textContent=`Youth player · ${n} match${n===1?'':'es'} loaded`;let total=k=>all.reduce((a,s)=>a+s[k],0);let pass=total('pass'),fail=total('passFail'),shots=total('shots'),miss=total('shotMiss'),duels=total('duels'),lost=total('duelLost');let pa=pass+fail?pass/(pass+fail)*100:null,sa=shots+miss?shots/(shots+miss)*100:null,dw=duels+lost?duels/(duels+lost)*100:null;document.getElementById('season-kpis').innerHTML=[kpi('Pass accuracy',fmt(pa,'%'),`${pass} tagged PASS · ${fail} PASS FAIL`,'var(--green)'),kpi('Shot accuracy',fmt(sa,'%'),`${shots} SHOT · ${miss} SHOT MISS`,'var(--amber)'),kpi('Duels won',fmt(dw,'%'),`${duels} DUEL · ${lost} DUEL LOST`,'var(--blue)'),kpi('Goals per game',fmt(n?total('playerGoals')/n:null,'x'),`${total('playerGoals')} player goals across ${n} match${n===1?'':'es'}`,'var(--purple)'),kpi('Assists per game',fmt(n?total('assists')/n:null,'x'),`${total('assists')} player assists across ${n} match${n===1?'':'es'}`,'var(--purple)'),kpi('Matches in season',n,'Loaded matches','var(--red)')].join('');trend();document.getElementById('season-radar').innerHTML=n?radarMarkupSeason():'<div class="empty">Load a match to see the profile.</div>';document.getElementById('season-table').innerHTML=matches.length?matches.map((m,i)=>{let s=get(m);return `<tr><td><button class="button" style="padding:5px 8px" onclick="openMatch('${m.id}')">${esc(m.name)}</button></td><td class="num">${s.events}</td><td class="num">${s.recoveries}</td><td class="num">${s.chances}</td><td class="num">${fmt(s.passAcc,'%')}</td></tr>`}).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px;">No matches loaded yet.</td></tr>';renderManage();}
+function renderMatch(){let a=document.getElementById('match-a'),b=document.getElementById('match-b'),prevA=a.value,prevB=b.value;a.innerHTML=matches.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');b.innerHTML='<option value="">Compare with…</option>'+matches.map(m=>`<option value="${m.id}">${esc(m.name)}</option>`).join('');if(matches.some(m=>m.id===prevA))a.value=prevA;if(matches.some(m=>m.id===prevB))b.value=prevB;let m=matches.find(x=>x.id===a.value)||matches[0];if(!m){document.getElementById('match-kpis').innerHTML='<div class="empty" style="grid-column:1/-1">No matches loaded yet. Add a match CSV above to view match stats.</div>';document.getElementById('timeline-chart').innerHTML='<div class="empty">No timeline available.</div>';document.getElementById('event-chart').innerHTML='<div class="empty">No events available.</div>';document.getElementById('match-radar').innerHTML='<div class="empty">No radar data available.</div>';document.getElementById('event-list').innerHTML='<div class="empty">No events logged.</div>';document.getElementById('timeline-total').textContent='0 EVENTS';document.getElementById('event-count').textContent='0 EVENTS';renderCompare();return}let s=get(m);document.getElementById('match-kpis').innerHTML=[kpi('Tagged events',s.events,'All timestamped actions','var(--green)'),kpi('Ball recoveries',s.recoveries,'Recorded recovery events','var(--blue)'),kpi('Chances created',s.chances,'As tagged in this export','var(--purple)'),kpi('Pass accuracy',fmt(s.passAcc,'%'),'Provisional calculation','var(--green)'),kpi('Duels won',fmt(s.duelRate,'%'),'Provisional calculation','var(--blue)'),kpi('Match name',m.name,'Selected fixture','var(--red)')].join('');document.getElementById('timeline-total').textContent=s.events+' EVENTS';let cats=[...new Set(m.events.map(e=>e.event))];let colors=Object.fromEntries(cats.map((c,i)=>[c,palette[i%palette.length]]));let max=Math.max(1,...m.events.map(e=>e.seconds));let w=600,h=200,left=35,right=12,top=22,bottom=28;let xAt=sec=>left+(sec/max)*(w-left-right);let intervals=[];let off=null;for(const ev of m.events){if(norm(ev.event)==='SUB OFF'){off=ev.seconds;}else if(norm(ev.event)==='SUB ON'&&off!==null){intervals.push([off,ev.seconds]);off=null;}}if(off!==null)intervals.push([off,max]);let absent=intervals.map(([a,b])=>`<rect x="${xAt(a)}" y="${top}" width="${Math.max(1,xAt(b)-xAt(a))}" height="${h-top-bottom}" fill="url(#absenceHatch)" opacity=".9"></rect>`).join('');let ball=(x,y,color,title)=>`<g transform="translate(${x},${y})"><circle r="7" fill="${color}" stroke="#f1f5f9" stroke-width="1.2"/><path d="M-2.4 -2.2 L2.4 -2.2 L3.8 1.8 L0 4.1 L-3.8 1.8 Z" fill="none" stroke="#142033" stroke-width="1.1"/></g>`;let marks=m.events.map(e=>{let x=xAt(e.seconds);let i=cats.indexOf(e.event);let y=top+((i+.5)/cats.length)*(h-top-bottom);let n=norm(e.event);if(n==='GOAL FOR')return ball(x,y,'#26d982','Goal for');if(n==='GOAL AGAINST')return ball(x,y,'#f04452','Goal against');return `<circle cx="${x}" cy="${y}" r="4.2" fill="${colors[e.event]}" stroke="#101b2d" stroke-width="1.5"><title>${e.time} · ${esc(e.event)}</title></circle>`}).join('');let labels=[0,.25,.5,.75,1].map(v=>{let x=left+(w-left-right)*v;return `<line x1="${x}" y1="${top}" x2="${x}" y2="${h-bottom}" stroke="#26364d"/><text x="${x}" y="${h-8}" text-anchor="middle" fill="#8294ad" font-size="10">${Math.round(max*v/60)}′</text>`}).join('');let ylabels=cats.map((c,i)=>`<text x="${left-7}" y="${top+((i+.5)/cats.length)*(h-top-bottom)+3}" text-anchor="end" fill="#9aabc1" font-size="9">${esc(c.length>14?c.slice(0,13)+'…':c)}</text>`).join('');document.getElementById('timeline-chart').innerHTML=`<svg viewBox="0 0 ${w} ${h}"><defs><pattern id="absenceHatch" patternUnits="userSpaceOnUse" width="8" height="8"><rect width="8" height="8" fill="#7f1d2d" fill-opacity=".20"/><path d="M-2 2 L2 -2 M0 8 L8 0" stroke="#ff5968" stroke-width="1.4"/></pattern></defs>${absent}${labels}${ylabels}${marks}</svg>`;document.getElementById('timeline-legend').innerHTML=cats.slice(0,7).map(c=>`<span><i class="dot" style="background:${colors[c]}"></i>${esc(c)}</span>`).join('');document.getElementById('event-chart').innerHTML=svgBars(cats.map(c=>({label:c,value:m.events.filter(e=>e.event===c).length,color:colors[c]})).sort((x,y)=>y.value-x.value));document.getElementById('match-radar').innerHTML=radarMarkupMatch(m);document.getElementById('event-count').textContent=s.events+' EVENTS';document.getElementById('event-list').innerHTML=m.events.map(e=>`<div class="event-row"><div class="time">${esc(e.time)}</div><div><div class="event-name">${esc(e.event)}</div><div class="event-zone">${esc(e.period||'')} · Zone ${esc(e.zone||'-')}</div></div><span class="dot" style="background:${colors[e.event]}"></span></div>`).join('');renderCompare();}
 function renderCompare(){let idA=document.getElementById('match-a').value,idB=document.getElementById('match-b').value;let a=matches.find(m=>m.id===idA),b=matches.find(m=>m.id===idB);let root=document.getElementById('comparison');if(!a||!b||a.id===b.id){root.innerHTML=`<div class="empty">Choose two different matches above to compare performances.</div>`;return}let sa=get(a),sb=get(b),rows=[['Tagged events',sa.events,sb.events],['Ball recoveries',sa.recoveries,sb.recoveries],['Chances created',sa.chances,sb.chances],['Pass accuracy',sa.passAcc,sb.passAcc,'%'],['Shot accuracy',sa.shotAcc,sb.shotAcc,'%'],['Duel win rate',sa.duelRate,sb.duelRate,'%'],['Goals for (team)',sa.goalsFor,sb.goalsFor],['Player goals',sa.playerGoals,sb.playerGoals]];root.innerHTML=`<div class="compare-kpis">${rows.slice(0,6).map(r=>{let av=r[1],bv=r[2],unit=r[3]||'',diff=av==null||bv==null?null:bv-av;return `<div class="compare-kpi"><div class="label">${r[0]}</div><div class="values"><span>${fmt(av,unit)}</span><span>${fmt(bv,unit)}</span></div><div class="delta">${diff==null?'—':(diff>0?'+':'')+fmt(diff,unit)+' in '+esc(b.name)}</div></div>`}).join('')}</div><div class="table-wrap" style="margin-top:16px"><table class="stat-table"><thead><tr><th>Metric</th><th>${esc(a.name)}</th><th>${esc(b.name)}</th><th>Difference</th></tr></thead><tbody>${rows.map(r=>`<tr><td>${r[0]}</td><td class="num">${fmt(r[1],r[3]||'')}</td><td class="num">${fmt(r[2],r[3]||'')}</td><td class="num">${r[1]==null||r[2]==null?'—':fmt(r[2]-r[1],r[3]||'')}</td></tr>`).join('')}</tbody></table></div>`;}
-function renderManage(){let n=matches.length;document.getElementById('manage-count').textContent=`${n} MATCH${n===1?'':'ES'}`;document.getElementById('manage-table').innerHTML=matches.map((m,i)=>{let s=get(m);return `<tr><td class="num">#${i+1}</td><td><input type="text" class="select" style="padding:6px 10px;min-width:140px" value="${esc(m.name)}" onchange="renameMatch('${m.id}',this.value)"></td><td><span class="sub">${esc(m.file)}</span></td><td class="num">${s.events}</td><td><div style="display:flex;gap:6px"><button class="button" style="padding:5px 8px" ${i===0?'disabled':''} onclick="moveMatch(${i},-1)">▲</button><button class="button" style="padding:5px 8px" ${i===n-1?'disabled':''} onclick="moveMatch(${i},1)">▼</button><button class="button danger" style="padding:5px 8px" onclick="deleteMatch('${m.id}')">Delete</button></div></td></tr>`}).join('');}
+function renderManage(){let n=matches.length;document.getElementById('manage-count').textContent=`${n} MATCH${n===1?'':'ES'}`;document.getElementById('manage-table').innerHTML=matches.length?matches.map((m,i)=>{let s=get(m);return `<tr><td class="num">#${i+1}</td><td><input type="text" class="select" style="padding:6px 10px;min-width:140px" value="${esc(m.name)}" onchange="renameMatch('${m.id}',this.value)"></td><td><span class="sub">${esc(m.file)}</span></td><td class="num">${s.events}</td><td><div style="display:flex;gap:6px"><button class="button" style="padding:5px 8px" ${i===0?'disabled':''} onclick="moveMatch(${i},-1)">▲</button><button class="button" style="padding:5px 8px" ${i===n-1?'disabled':''} onclick="moveMatch(${i},1)">▼</button><button class="button danger" style="padding:5px 8px" onclick="deleteMatch('${m.id}')">Delete</button></div></td></tr>`}).join(''):'<tr><td colspan="5" style="text-align:center;color:var(--muted);padding:16px;">No matches loaded yet.</td></tr>';}
 function renameMatch(id,newName){let m=matches.find(x=>x.id===id);if(m&&newName.trim()){m.name=newName.trim();renderSeason();renderMatch(); if(window.saveMatchesToCloud) window.saveMatchesToCloud();}}
 function moveMatch(idx,dir){let target=idx+dir;if(target<0||target>=matches.length)return;let tmp=matches[idx];matches[idx]=matches[target];matches[target]=tmp;renderSeason();renderMatch(); if(window.saveMatchesToCloud) window.saveMatchesToCloud();}
-function deleteMatch(id){if(matches.length<=1){alert('You must keep at least one match loaded.');return;}matches=matches.filter(m=>m.id!==id);renderSeason();renderMatch(); if(window.deleteMatchFromCloud) window.deleteMatchFromCloud(id);}
+function deleteMatch(id){matches=matches.filter(m=>m.id!==id);renderSeason();renderMatch(); if(window.deleteMatchFromCloud) window.deleteMatchFromCloud(id);}
 function openMatch(id){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view==='match'));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='match'));document.getElementById('match-a').value=id;renderMatch();window.scrollTo({top:0,behavior:'smooth'})}
 
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
@@ -381,10 +317,6 @@ document.getElementById('json-file').addEventListener('change',async ev=>{
 
 document.getElementById('export').addEventListener('click',()=>{let out=matches.map(m=>({match:m.name,stats:get(m),events:m.events}));let blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='football-performance-data.json';a.click();URL.revokeObjectURL(url)});
 
-// Initial fallback load if not logged in
-if(!window.currentUser && matches.length === 0) {
-  matches=INITIAL_MATCHES.map((m,i)=>makeMatch(m,i));
-  renderSeason();
-  renderMatch();
-}
+renderSeason();
+renderMatch();
 </script></body></html>
