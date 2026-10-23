@@ -13,6 +13,51 @@
 .splash-form input{background:#0e1929;color:var(--text);border:1px solid var(--line);border-radius:10px;padding:12px;width:100%;font-size:14px}
 .splash-actions{display:flex;gap:10px;margin-top:8px}
 .splash-actions button{flex:1;padding:12px;font-size:14px}
+
+/* MatchTag Pad Styles */
+.matchtag-container{max-width:540px;margin:0 auto;background:#121820;border:1px solid #233144;border-radius:20px;padding:16px;box-shadow:0 12px 36px rgba(0,0,0,0.4)}
+.matchtag-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;background:#0d131d;padding:10px 14px;border-radius:14px;border:1px solid #1e2c40}
+.matchtag-title{font-size:18px;font-weight:900;letter-spacing:.06em;color:#ffffff;display:flex;align-items:center;gap:6px}
+.matchtag-title span{color:#1bd982}
+.matchtag-clock-box{font-family:monospace;font-size:20px;font-weight:900;background:#060a11;color:#1bd982;padding:4px 12px;border-radius:8px;border:1px solid #1a2a3d;letter-spacing:1px}
+.matchtag-btn-save{background:#10b981;color:#051a11;border:none;padding:8px 18px;border-radius:10px;font-weight:900;font-size:13px;letter-spacing:.05em;cursor:pointer;transition:transform 0.1s, filter 0.1s}
+.matchtag-btn-save:hover{filter:brightness(1.15);transform:scale(1.02)}
+.matchtag-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px}
+.pad-btn{position:relative;border:none;border-radius:10px;padding:18px 10px;font-weight:800;font-size:13px;letter-spacing:.04em;color:#ffffff;cursor:pointer;text-align:center;text-transform:uppercase;user-select:none;display:flex;align-items:center;justify-content:center;min-height:56px;box-shadow:0 4px 12px rgba(0,0,0,0.25);transition:transform .08s, filter .1s}
+.pad-btn:active{transform:scale(0.96);filter:brightness(1.2)}
+.pad-btn.edit-mode-active{outline:2px dashed #38bdf8}
+.pad-btn .pad-controls{position:absolute;top:3px;right:3px;display:none;gap:3px;z-index:2}
+.pad-btn.edit-mode-active .pad-controls{display:flex}
+.pad-ctrl-btn{background:rgba(0,0,0,0.7);color:#fff;border:none;border-radius:4px;width:20px;height:20px;font-size:10px;display:grid;place-items:center;cursor:pointer}
+.pad-ctrl-btn:hover{background:#000}
+.pad-red{background:#cc2d30}
+.pad-green{background:#15803d}
+.pad-purple{background:#7e22ce}
+.pad-amber{background:#eab308;color:#1a1000}
+.pad-blue{background:#1d4ed8}
+.pad-teal{background:#0d9488}
+.pad-pink{background:#db2777}
+.pad-slate{background:#475569}
+.pad-darkblue{background:#1e3a8a}
+.pad-orange{background:#ea580c}
+.pad-add{background:transparent;border:2px dashed #2d3f57;color:#64748b;font-size:24px;min-height:56px;border-radius:10px;display:grid;place-items:center;cursor:pointer}
+.pad-add:hover{border-color:#475569;color:#94a3b8}
+.matchtag-toolbar{display:grid;grid-template-columns:auto auto 1fr;gap:8px;align-items:center;background:#0d131d;padding:10px;border-radius:14px;border:1px solid #1e2c40}
+.matchtag-tool-btn{background:#233144;color:#e2e8f0;border:1px solid #33445c;padding:10px 14px;border-radius:10px;font-weight:700;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px;justify-content:center}
+.matchtag-tool-btn:hover{background:#2d3f57}
+.matchtag-tool-btn.active{background:#059669;color:#fff;border-color:#10b981}
+
+/* Edit Tile Modal */
+#tile-modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:none;align-items:center;justify-content:center;z-index:10000;padding:20px}
+.tile-modal-box{background:#121b29;border:1px solid var(--line);border-radius:16px;padding:22px;max-width:380px;width:100%;box-shadow:0 20px 40px rgba(0,0,0,0.6)}
+.tile-modal-box h3{margin:0 0 14px;font-size:16px;color:#fff}
+.tile-form{display:flex;flex-direction:column;gap:12px}
+.tile-form label{font-size:11px;font-weight:700;color:var(--muted);text-transform:uppercase}
+.tile-form input, .tile-form select{background:#080e17;color:var(--text);border:1px solid var(--line);border-radius:8px;padding:9px;width:100%}
+.color-picker-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-top:4px}
+.color-opt{height:30px;border-radius:6px;cursor:pointer;border:2px solid transparent}
+.color-opt.selected{border-color:#fff;transform:scale(1.08)}
+
 @media(max-width:1100px){.kpis{grid-template-columns:repeat(3,1fr)}.twocol,.half{grid-template-columns:1fr}.thirds{grid-template-columns:1fr 1fr}}@media(max-width:650px){.app{padding:16px}.top{align-items:flex-start;flex-direction:column}.top h1{font-size:22px}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.kpi-value{font-size:25px}.thirds{grid-template-columns:1fr}.radar-wrap{grid-template-columns:1fr}.radar-key{grid-template-columns:1fr 1fr}.tabs{width:100%}.tab{flex:1;padding:10px 7px;font-size:12px}.section-head{align-items:flex-start;flex-direction:column}}
 </style>
 </head><body>
@@ -40,13 +85,38 @@
   </div>
 </div>
 
+<!-- Edit Button Modal -->
+<div id="tile-modal">
+  <div class="tile-modal-box">
+    <h3 id="modal-title">Customize Event Button</h3>
+    <div class="tile-form">
+      <div>
+        <label>Button Display Text</label>
+        <input type="text" id="modal-tile-label" placeholder="e.g., PASS FAIL">
+      </div>
+      <div>
+        <label>Mapped Event Key</label>
+        <input type="text" id="modal-tile-event" placeholder="e.g., PASS FAIL">
+      </div>
+      <div>
+        <label>Button Theme Color</label>
+        <div class="color-picker-grid" id="modal-color-grid"></div>
+      </div>
+      <div style="display:flex;gap:8px;margin-top:10px;">
+        <button class="button primary" id="modal-btn-save" style="flex:1;">Save Tile</button>
+        <button class="button" id="modal-btn-cancel" style="flex:1;">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="app">
 <header class="top">
   <div class="brand">
     <div class="crest">✦</div>
     <div>
       <div class="eyebrow">Player performance lab</div>
-      <h1>Football Analytics</h1>
+      <h1>Football Tagalytics</h1>
       <div class="sub" id="subtitle">Youth player · 0 matches loaded</div>
     </div>
   </div>
@@ -63,7 +133,9 @@
     <button class="button" id="export">Export data</button>
   </div>
 </header>
-<nav class="tabs"><button class="tab active" data-view="season">Season at a glance</button><button class="tab" data-view="match">Match centre</button><button class="tab" data-view="manage">Manage matches</button></nav>
+<nav class="tabs"><button class="tab active" data-view="season">Season at a glance</button><button class="tab" data-view="match">Match centre</button><button class="tab" data-view="live">Live Tagging</button><button class="tab" data-view="manage">Manage matches</button></nav>
+
+<!-- Season View -->
 <div id="season" class="view active">
 <div class="section-head"><div><h2>Season at a glance</h2><p>High-level output, consistency and trends across every loaded match.</p></div><span class="pill" id="season-count">0 MATCHES LOADED</span></div>
 <div class="notice"><strong>Data note:</strong> GOAL and ASSIST events are attributed to the player; GOAL FOR and GOAL AGAINST describe team goals. Pass, shot and duel percentages below are provisional interpretations of the event labels. Add your first match CSV or import JSON to unlock season trends.</div>
@@ -72,6 +144,8 @@
 <section class="card"><div class="card-title"><div><h3>Season story so far</h3><p>Evidence-led observations from the loaded matches.</p></div><span class="pill">AUTO INSIGHTS</span></div><div class="insights" id="season-insights"><div class="insight"><div class="insight-icon">✦</div><div><strong>No Matches Analysed</strong><span>Add your first match to establish a performance baseline.</span></div></div></div></section></div>
 <div class="grid half"><section class="card"><div class="card-title"><div><h3>Contribution profile</h3><p>Average activity per match across the season (normalised).</p></div><span class="pill">SEASON AVERAGE</span></div><div id="season-radar" class="radar-wrap"></div></section><section class="card"><div class="card-title"><div><h3>Match register</h3><p>Quick comparison of loaded match summaries.</p></div><span class="pill">ALL MATCHES</span></div><div class="table-wrap"><table class="stat-table"><thead><tr><th>Match</th><th>Events</th><th>Recoveries</th><th>Chances</th><th>Pass %*</th></tr></thead><tbody id="season-table"></tbody></table></div></section></div>
 </div>
+
+<!-- Match Centre View -->
 <div id="match" class="view">
 <div class="section-head"><div><h2>Match centre</h2><p>Inspect one performance or compare two matches side by side.</p></div><div class="filters"><select class="select" id="match-a" aria-label="Select match"></select><select class="select" id="match-b" aria-label="Select comparison match"></select></div></div>
 <div class="grid kpis" id="match-kpis"></div>
@@ -79,6 +153,57 @@
 <div class="grid half" style="margin-bottom:14px"><section class="card"><div class="card-title"><div><h3>Match performance radar</h3><p>Single-match activity distribution.</p></div><span class="pill">PLAYER PROFILE</span></div><div id="match-radar" class="radar-wrap"></div></section><section class="card"><div class="card-title"><div><h3>Match event log</h3><p>Chronological view of the manually tagged events.</p></div><span class="pill" id="event-count"></span></div><div class="event-list" id="event-list"></div></section></div>
 <section class="card"><div class="card-title"><div><h3>Two-match comparison</h3><p>Select two different matches above.</p></div><span class="pill">HEAD TO HEAD</span></div><div id="comparison"></div></section>
 </div>
+
+<!-- Live Tagging View -->
+<div id="live" class="view">
+  <div class="section-head">
+    <div>
+      <h2>Live Match Pad</h2>
+      <p>Tap metric buttons in real-time during a live match to capture timestamped events.</p>
+    </div>
+    <div style="display:flex;gap:8px;align-items:center;">
+      <button class="button" id="btn-toggle-edit-pads">⚙ Edit Buttons</button>
+    </div>
+  </div>
+
+  <div class="grid twocol" style="grid-template-columns: 1fr 340px;">
+    <!-- Main MatchTag Touchpad -->
+    <div class="matchtag-container">
+      <div class="matchtag-header">
+        <div class="matchtag-title">MATCH<span>TAG</span></div>
+        <div class="matchtag-clock-box" id="live-clock-display">00:00</div>
+        <button class="matchtag-btn-save" id="btn-save-live-match">SAVE</button>
+      </div>
+
+      <div class="matchtag-grid" id="matchtag-grid"></div>
+
+      <div class="matchtag-toolbar">
+        <button class="matchtag-tool-btn" id="btn-undo-tag" title="Undo Last Tag">↶ Undo</button>
+        <button class="matchtag-tool-btn" id="btn-reset-clock" title="Reset Clock">↻ Reset</button>
+        <button class="matchtag-tool-btn active" id="btn-toggle-clock" style="width:100%;">► START</button>
+      </div>
+    </div>
+
+    <!-- Live Event Feed Card -->
+    <section class="card" style="display:flex;flex-direction:column;max-height:620px;">
+      <div class="card-title">
+        <div>
+          <h3>Live Session Stream</h3>
+          <p>Captured events for current session.</p>
+        </div>
+        <span class="pill" id="live-logged-count">0 TAGS</span>
+      </div>
+      <div style="margin-bottom:10px;">
+        <input type="text" id="live-match-name" class="select" style="width:100%;" placeholder="Match Title (e.g. vs Red Rovers)">
+      </div>
+      <div class="event-list" id="live-event-feed" style="flex:1;">
+        <div class="empty">No events logged yet. Start timer and tap buttons to capture metrics.</div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Manage View -->
 <div id="manage" class="view">
 <div class="section-head"><div><h2>Manage matches</h2><p>Rename matches, change their chronological order, or delete loaded games.</p></div><span class="pill" id="manage-count">0 MATCHES</span></div>
 <section class="card"><div class="card-title"><div><h3>Loaded match sequence</h3><p>Use the up/down buttons to reorder matches across the season, rename them, or remove them.</p></div><span class="pill">SEQUENCE</span></div><div class="table-wrap"><table class="stat-table"><thead><tr><th>Order</th><th>Match Name</th><th>Filename</th><th>Events</th><th>Actions</th></tr></thead><tbody id="manage-table"></tbody></table></div></section>
@@ -266,11 +391,274 @@ function moveMatch(idx,dir){let target=idx+dir;if(target<0||target>=matches.leng
 function deleteMatch(id){matches=matches.filter(m=>m.id!==id);renderSeason();renderMatch(); if(window.deleteMatchFromCloud) window.deleteMatchFromCloud(id);}
 function openMatch(id){document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.view==='match'));document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id==='match'));document.getElementById('match-a').value=id;renderMatch();window.scrollTo({top:0,behavior:'smooth'})}
 
+/* -------------------------------------------------------------
+   LIVE MATCHTAG ENGINE & BUTTON CUSTOMIZATION
+------------------------------------------------------------- */
+const DEFAULT_PADS = [
+  { id: 'p1', label: 'PASS FAIL', event: 'PASS FAIL', color: 'pad-red' },
+  { id: 'p2', label: 'PASS', event: 'PASS', color: 'pad-green' },
+  { id: 'p3', label: 'SHOT MISS', event: 'SHOT MISS', color: 'pad-red' },
+  { id: 'p4', label: 'SHOT', event: 'SHOT', color: 'pad-green' },
+  { id: 'p5', label: 'DRIBBLE FAIL', event: 'DRIBBLE FAIL', color: 'pad-red' },
+  { id: 'p6', label: 'DRIBBLE', event: 'DRIBBLE', color: 'pad-green' },
+  { id: 'p7', label: 'DUEL LOST', event: 'DUEL LOST', color: 'pad-red' },
+  { id: 'p8', label: 'DUEL', event: 'DUEL', color: 'pad-green' },
+  { id: 'p9', label: 'ASSIST', event: 'ASSIST', color: 'pad-purple' },
+  { id: 'p10', label: 'GOAL', event: 'GOAL', color: 'pad-purple' },
+  { id: 'p11', label: 'BALL RECOVERY', event: 'BALL RECOVERY', color: 'pad-amber' },
+  { id: 'p12', label: 'SUB ON', event: 'SUB ON', color: 'pad-green' },
+  { id: 'p13', label: 'SUB OFF', event: 'SUB OFF', color: 'pad-red' },
+  { id: 'p14', label: 'CHANCE CREATED', event: 'CHANCE CREATED', color: 'pad-blue' },
+  { id: 'p15', label: 'GOAL AGAINST', event: 'GOAL AGAINST', color: 'pad-red' },
+  { id: 'p16', label: 'GOAL FOR', event: 'GOAL FOR', color: 'pad-green' }
+];
+
+const THEME_COLORS = [
+  { class: 'pad-red', hex: '#cc2d30' },
+  { class: 'pad-green', hex: '#15803d' },
+  { class: 'pad-purple', hex: '#7e22ce' },
+  { class: 'pad-amber', hex: '#eab308' },
+  { class: 'pad-blue', hex: '#1d4ed8' },
+  { class: 'pad-teal', hex: '#0d9488' },
+  { class: 'pad-pink', hex: '#db2777' },
+  { class: 'pad-slate', hex: '#475569' },
+  { class: 'pad-darkblue', hex: '#1e3a8a' },
+  { class: 'pad-orange', hex: '#ea580c' }
+];
+
+let padList = JSON.parse(localStorage.getItem('matchtag_custom_pads')) || DEFAULT_PADS;
+let isEditPadsMode = false;
+let activeModalPadId = null;
+let selectedModalColor = 'pad-green';
+
+let liveSeconds = 0;
+let liveTimerInterval = null;
+let isTimerRunning = false;
+let liveEvents = [];
+
+function formatTime(totalSec) {
+  let m = Math.floor(totalSec / 60);
+  let s = totalSec % 60;
+  return `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+}
+
+function renderPads() {
+  const grid = document.getElementById('matchtag-grid');
+  if(!grid) return;
+
+  grid.innerHTML = padList.map(pad => `
+    <button class="pad-btn ${pad.color} ${isEditPadsMode ? 'edit-mode-active' : ''}" onclick="onPadClick('${pad.id}')">
+      <span>${esc(pad.label)}</span>
+      <div class="pad-controls">
+        <span class="pad-ctrl-btn" onclick="event.stopPropagation(); openEditTileModal('${pad.id}')">✎</span>
+        <span class="pad-ctrl-btn" onclick="event.stopPropagation(); deleteTile('${pad.id}')">✕</span>
+      </div>
+    </button>
+  `).join('') + `
+    <button class="pad-add" onclick="openAddTileModal()" title="Add Custom Button">＋</button>
+  `;
+}
+
+function savePadsLocally() {
+  localStorage.setItem('matchtag_custom_pads', JSON.stringify(padList));
+}
+
+function onPadClick(padId) {
+  if(isEditPadsMode) return;
+  const pad = padList.find(p => p.id === padId);
+  if(!pad) return;
+
+  const eventTime = formatTime(liveSeconds);
+  const newEv = {
+    time: eventTime,
+    seconds: liveSeconds,
+    period: 'P1',
+    event: pad.event,
+    zone: '-'
+  };
+
+  liveEvents.push(newEv);
+  renderLiveFeed();
+}
+
+function renderLiveFeed() {
+  const feed = document.getElementById('live-event-feed');
+  const countEl = document.getElementById('live-logged-count');
+  if(!feed || !countEl) return;
+
+  countEl.textContent = `${liveEvents.length} TAGS`;
+
+  if(!liveEvents.length) {
+    feed.innerHTML = `<div class="empty">No events logged yet. Start timer and tap buttons to capture metrics.</div>`;
+    return;
+  }
+
+  feed.innerHTML = liveEvents.slice().reverse().map((ev, idx) => {
+    const realIndex = liveEvents.length - 1 - idx;
+    return `
+      <div class="event-row">
+        <div class="time">${esc(ev.time)}</div>
+        <div>
+          <div class="event-name">${esc(ev.event)}</div>
+          <div class="event-zone">Zone ${esc(ev.zone)}</div>
+        </div>
+        <button class="button danger" style="padding:2px 6px;font-size:10px;" onclick="removeLiveEvent(${realIndex})">✕</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function removeLiveEvent(index) {
+  liveEvents.splice(index, 1);
+  renderLiveFeed();
+}
+
+function toggleClock() {
+  const btn = document.getElementById('btn-toggle-clock');
+  if(isTimerRunning) {
+    clearInterval(liveTimerInterval);
+    isTimerRunning = false;
+    btn.textContent = '► START';
+    btn.classList.remove('active');
+  } else {
+    isTimerRunning = true;
+    btn.textContent = '⏸ PAUSE';
+    btn.classList.add('active');
+    liveTimerInterval = setInterval(() => {
+      liveSeconds++;
+      document.getElementById('live-clock-display').textContent = formatTime(liveSeconds);
+    }, 1000);
+  }
+}
+
+function resetClock() {
+  if(isTimerRunning) toggleClock();
+  liveSeconds = 0;
+  document.getElementById('live-clock-display').textContent = '00:00';
+}
+
+function undoLastTag() {
+  if(liveEvents.length > 0) {
+    liveEvents.pop();
+    renderLiveFeed();
+  }
+}
+
+function saveLiveMatch() {
+  if(!liveEvents.length) {
+    alert('Please capture at least one metric event before saving the match.');
+    return;
+  }
+
+  const titleInput = document.getElementById('live-match-name');
+  const matchName = (titleInput && titleInput.value.trim()) ? titleInput.value.trim() : `Live Tag Match (${new Date().toLocaleDateString()})`;
+
+  const newMatch = makeMatch({
+    name: matchName,
+    file: 'Live Tagged Session',
+    events: liveEvents
+  }, matches.length);
+
+  matches.push(newMatch);
+
+  // Reset Live session state
+  liveEvents = [];
+  resetClock();
+  if(titleInput) titleInput.value = '';
+  renderLiveFeed();
+
+  renderSeason();
+  renderMatch();
+  if(window.saveMatchesToCloud) window.saveMatchesToCloud();
+
+  alert(`Match "${matchName}" successfully saved to your platform dataset!`);
+  openMatch(newMatch.id);
+}
+
+/* Modal and Customization Logic */
+function initColorPicker() {
+  const grid = document.getElementById('modal-color-grid');
+  grid.innerHTML = THEME_COLORS.map(c => `
+    <div class="color-opt ${c.class}" style="background:${c.hex}" onclick="selectModalColor('${c.class}')" id="opt-${c.class}"></div>
+  `).join('');
+}
+
+function selectModalColor(colorClass) {
+  selectedModalColor = colorClass;
+  document.querySelectorAll('.color-opt').forEach(el => el.classList.remove('selected'));
+  const target = document.getElementById(`opt-${colorClass}`);
+  if(target) target.classList.add('selected');
+}
+
+function openAddTileModal() {
+  activeModalPadId = null;
+  document.getElementById('modal-title').textContent = 'Add Custom Button';
+  document.getElementById('modal-tile-label').value = '';
+  document.getElementById('modal-tile-event').value = '';
+  selectModalColor('pad-green');
+  document.getElementById('tile-modal').style.display = 'flex';
+}
+
+function openEditTileModal(padId) {
+  const pad = padList.find(p => p.id === padId);
+  if(!pad) return;
+  activeModalPadId = padId;
+  document.getElementById('modal-title').textContent = 'Edit Event Button';
+  document.getElementById('modal-tile-label').value = pad.label;
+  document.getElementById('modal-tile-event').value = pad.event;
+  selectModalColor(pad.color || 'pad-green');
+  document.getElementById('tile-modal').style.display = 'flex';
+}
+
+function closeTileModal() {
+  document.getElementById('tile-modal').style.display = 'none';
+}
+
+function saveTileFromModal() {
+  const label = document.getElementById('modal-tile-label').value.trim();
+  const eventKey = document.getElementById('modal-tile-event').value.trim() || label;
+
+  if(!label) {
+    alert('Please enter a display label for the button.');
+    return;
+  }
+
+  if(activeModalPadId) {
+    const pad = padList.find(p => p.id === activeModalPadId);
+    if(pad) {
+      pad.label = label;
+      pad.event = eventKey.toUpperCase();
+      pad.color = selectedModalColor;
+    }
+  } else {
+    padList.push({
+      id: 'p_' + Math.random().toString(36).substr(2, 9),
+      label: label,
+      event: eventKey.toUpperCase(),
+      color: selectedModalColor
+    });
+  }
+
+  savePadsLocally();
+  renderPads();
+  closeTileModal();
+}
+
+function deleteTile(padId) {
+  if(confirm('Are you sure you want to remove this button?')) {
+    padList = padList.filter(p => p.id !== padId);
+    savePadsLocally();
+    renderPads();
+  }
+}
+
+/* Event Listener bindings for Navigation & Buttons */
 document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
   document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===t));
   document.querySelectorAll('.view').forEach(v=>v.classList.toggle('active',v.id===t.dataset.view));
   if(t.dataset.view==='match') renderMatch();
   if(t.dataset.view==='manage') renderManage();
+  if(t.dataset.view==='live') renderPads();
 }));
 
 document.getElementById('match-a').addEventListener('change',renderMatch);
@@ -317,6 +705,24 @@ document.getElementById('json-file').addEventListener('change',async ev=>{
 
 document.getElementById('export').addEventListener('click',()=>{let out=matches.map(m=>({match:m.name,stats:get(m),events:m.events}));let blob=new Blob([JSON.stringify(out,null,2)],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='football-performance-data.json';a.click();URL.revokeObjectURL(url)});
 
+document.getElementById('btn-toggle-clock').addEventListener('click', toggleClock);
+document.getElementById('btn-reset-clock').addEventListener('click', resetClock);
+document.getElementById('btn-undo-tag').addEventListener('click', undoLastTag);
+document.getElementById('btn-save-live-match').addEventListener('click', saveLiveMatch);
+
+document.getElementById('btn-toggle-edit-pads').addEventListener('click', () => {
+  isEditPadsMode = !isEditPadsMode;
+  const btn = document.getElementById('btn-toggle-edit-pads');
+  btn.classList.toggle('primary', isEditPadsMode);
+  btn.textContent = isEditPadsMode ? '✓ Done Editing' : '⚙ Edit Buttons';
+  renderPads();
+});
+
+document.getElementById('modal-btn-save').addEventListener('click', saveTileFromModal);
+document.getElementById('modal-btn-cancel').addEventListener('click', closeTileModal);
+
+initColorPicker();
+renderPads();
 renderSeason();
 renderMatch();
 </script></body></html>
